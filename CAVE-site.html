@@ -8,6 +8,12 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -33,10 +39,12 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
       text-decoration: underline;
+      color: #ccc;
     }
 
     .container {
@@ -57,14 +65,19 @@
       border: 1px solid #180a5c;
       border-radius: 8px;
       box-shadow: 1px 2px 5px rgba(19, 3, 139, 0.1);
-      text-align: center;
+      text-align: left;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.2s;
     }
 
     .product-card img {
-      max-width: 100%;
-      max-height: 150px;
+      max-width: 150%;
+      max-height: 200px;
       object-fit: cover;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px; 
+      display: block;
     }
 
     footer {
@@ -123,6 +136,10 @@
           <img src="${data.imagem || 'https://via.placeholder.com/150'}" alt="${data.nome}">
           <h3>${data.nome}</h3>
           <p>${data.descricao}</p>
+          <p><strong>Preço:</strong> R$ ${data.preco}</p>
+          <p><strong>Cor:</strong> ${data.cor}</p>
+          <p><strong>Estoque:</strong> ${data.estoque}</p>
+          <p><strong>Tamanho:</strong> ${data.tamanho}</P>
         `;
         catalog.appendChild(card);
       });
